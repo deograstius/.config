@@ -1,0 +1,30 @@
+# Set terminal color.
+export TERM="xterm-256color"
+
+# Default editor.
+export EDITOR="vim"
+
+# Set GPG up to ask for password in the terminal.
+export GPG_TTY=$(tty)
+
+# Make sure tmux opens up automatically.
+if command -v tmux &> /dev/null && [ -z "$TMUX" ];
+then
+  tmux attach -t default || tmux new -s default;
+fi
+
+# Make sure that we have expo configured.
+source ~/.expo/config
+
+# Set the language so that tmux powerline doesn't crap out.
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
+# Kubernetes setup
+source <(kubectl completion zsh)
+
+# Use the the brew version of vim instead of the native mac one.
+alias vim=/opt/homebrew/bin/vim
+
+# Expo variables
+export EXPO_NO_CAPABILITY_SYNC=1
